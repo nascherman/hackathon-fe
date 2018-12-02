@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import Button from '@material-ui/core/Button';
 
+const { SHOPIFY_SERVICE_URL } = require('../config/config');
+
 export default class AuthorizeForm extends Component {
     constructor(props) {
         super(props);
@@ -27,7 +29,7 @@ export default class AuthorizeForm extends Component {
 
         const shop = params.get('shop');
 
-        fetch(`http://localhost:8080/install?shop=${shop}`)
+        fetch(`${SHOPIFY_SERVICE_URL}/install?shop=${shop}`)
             .then(res => res.text())
             .then(res => {
                 window.open(res, '_blank');
