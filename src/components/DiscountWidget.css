@@ -1,0 +1,57 @@
+.slider-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.slider-container #label {
+    width: 100%;
+}
+
+.slider-container .discount {
+    width: 10%;
+    margin-right: 1rem;
+    border: solid 1px grey;
+}
+
+.slider-container #slider {
+    width: calc(90% - 1rem);
+}
+
+.discount-widget {
+    width: 100%;
+}
+
+.discount-widget__summary {
+    width: 100%;
+    display: flex;
+}
+
+.discount-widget__summary img {
+    width: 50%;
+    height: 100%;
+}
+
+.discount-widget__summary-items {
+    display: flex;
+    flex-direction: column;
+}
+
+.discount-widget__summary-items price {
+    text-decoration: line-through;
+}
+
+.discount-widget__summary-description {
+    display: flex;
+    flex-direction: column;
+}
+
+.discount-widget__button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
