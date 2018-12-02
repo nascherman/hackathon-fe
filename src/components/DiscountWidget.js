@@ -6,7 +6,7 @@ import Icon from '@material-ui/core/Icon';
 
 import './DiscountWidget.css';
 
-const SERVICE_URL = 'http://localhost:8080'
+const { SHOPIFY_SERVICE_URL } = require('../config/config');
 
 export default class DiscountWidget extends Component {
     constructor(props) {
@@ -37,7 +37,7 @@ export default class DiscountWidget extends Component {
     }
 
     fetchInventory(accessToken, shop) {
-        fetch(`${SERVICE_URL}/inventory?access_token=${accessToken}&shop=${shop}`)
+        fetch(`${SHOPIFY_SERVICE_URL}/inventory?access_token=${accessToken}&shop=${shop}`)
             .then(res => res.json())
             .then(res => {
                 const {title, price, inventory, imageURL, id} = res;
@@ -61,7 +61,7 @@ export default class DiscountWidget extends Component {
     discount() {
         const { id, price } = this.state;
         const { accessToken, shop } = this.props;
-        fetch(`${SERVICE_URL}/discount`, {
+        fetch(`${SHOPIFY_SERVICE_URL}/discount`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
