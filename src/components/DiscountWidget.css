@@ -1,57 +1,175 @@
-.slider-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-.slider-container #label {
-    width: 100%;
-}
-
-.slider-container .discount {
-    width: 10%;
-    margin-right: 1rem;
-    border: solid 1px grey;
-}
-
-.slider-container #slider {
-    width: calc(90% - 1rem);
-}
-
 .discount-widget {
     width: 100%;
+    height: 100%;
+    border: solid 1px #D9E5F5;
+    border-radius: .5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.discount-widget__cta {
+    padding: 1rem;
+    background: #DFE9F7;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: wrap;
+
+    width: 100%;
+}
+
+.discount-widget__cta .material-icons {
+    font-size: 3rem;
+}
+
+.discount-widget__cta p {
+    margin: 0;
+}
+
+.discount-widget__cta span {
+    align-self: flex-start;
+}
+
+.discount-widget__cta span + p{
+    width: calc(100% - 4rem);
+    margin-left: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.discount-widget__cta span + p + p {
+    margin-left: 4rem;
+    font-style: italic;
 }
 
 .discount-widget__summary {
     width: 100%;
     display: flex;
-}
-
-.discount-widget__summary img {
-    width: 50%;
-    height: 100%;
+    margin-top: .5rem;
 }
 
 .discount-widget__summary-items {
-    display: flex;
-    flex-direction: column;
+    width: 50%;
 }
 
-.discount-widget__summary-items price {
-    text-decoration: line-through;
+.discount-widget__summary-image {
+    position: relative;
+    width: 45%;
+    display: flex;
+    align-items: center;
 }
 
-.discount-widget__summary-description {
+.discount-widget__summary-image img {
+    width: 100%;
+    background: #DFE9F7;
+    border-radius: .5rem;
+    border: solid 1px #D9E5F5;
+}
+
+.discount-widget__summary-image div {
+    position: absolute;
+    bottom: -1rem;
+    left: -1rem;
+    border: solid 1px #D9E5F5;
+
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 3rem;
+    height: 3rem;
+    font-weight: 700;
+    background: #DFE9F7;
+    border-radius: 50%;
+}
+
+.discount-widget__summary-items {
+    padding: 1rem;
+}
+
+.discount-widget__summary-items p {
+    margin: 0;
+}
+
+.discount-widget__summary-items p:first-child {
+    margin-bottom: 0.5rem;
+}
+
+.discount-widget__summary-items .current-price,
+.discount-widget__summary-items .current-price + p {
+    color: grey;
+}
+
+.discount-widget__summary-items .discounted-price,
+.discount-widget__summary-items .discounted-price + p {
+    font-weight: 700;
 }
 
 .discount-widget__button-container {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.discount-widget #slider {
+    overflow: hidden;
+    width: 90%;
+    height: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin: 1rem 0 0;
+}
+
+.slider-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+    padding: 1rem;
+}
+
+
+.slider-container p {
+    margin: 0.5rem 0 0;
+}
+
+.slider-container div:last-child {
+    display: flex;
+    align-items: flex-end;
+}
+
+.slider-container div p {
+    margin: 0;
+}
+
+.slider-container div p:first-child {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+.slider-container div p:last-child {
+    margin-bottom: 0.2rem;
+}
+
+.discount-widget__button-container {
+    margin-bottom: 1rem;
+}
+
+.discount-widget__summary--discounted {
+    margin-bottom: 0.5rem;
+}
+
+.discount-widget__summary-items--discounted div {
+    display: flex;
+}
+.discount-widget__summary-items--discounted div p {
+    margin-right: 0.5rem;
+}
+
+.discount-widget__summary-items--discounted div p:last-child {
+    text-decoration: line-through;
+    color: grey;
 }

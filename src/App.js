@@ -14,8 +14,15 @@ class App extends Component {
     constructor(props) {
         super(props);
 
+        const accessToken = window.localStorage.getItem('accessToken');
+        const shop = window.localStorage.getItem('shop');
+
         this.state = {
-            connected: false
+            title: 'Team 13 App',
+            connected: accessToken && shop ? true : false,
+            predictedBalance: -500,
+            accessToken: accessToken,
+            shop: shop
         };
 
         window.addEventListener('message', this.handleMessage.bind(this),
@@ -24,7 +31,14 @@ class App extends Component {
 
     handleMessage(event) {
         if (event.data.accessToken) {
-            console.log('EVENT', event.data);
+            window.localStorage.setItem(
+                'accessToken',
+                event.data.accessToken
+            );
+            window.localStorage.setItem(
+                'shop',
+                event.data.shop
+            );
 
             this.setState({
                 accessToken: event.data.accessToken,
@@ -35,22 +49,33 @@ class App extends Component {
     }
 
     render() {
-        const { connected, accessToken, shop } = this.state;
+        const {
+            title,
+            connected,
+            accessToken,
+            shop,
+            predictedBalance } = this.state;
         return (
             <div className={'app'}>
                 <CssBaseline/>
                 <Grid container spacing={24} className={'grid-item'}>
                     <Grid item xs={12}>
-                        <AuthorizeForm connected={connected}/>
+                        <div className={'app-title'}>
+                            <h1>{title}</h1>
+                        </div>
                     </Grid>
                     <Grid item xs={12}>
-                        <ShortFallWidget/>
+                        <ShortFallWidget
+                            accessToken={accessToken}
+                            predictedBalance={predictedBalance}
+                        />
                     </Grid>
                     <Grid item xs={12}>
                         <DiscountWidget
                             connected={connected}
                             accessToken={accessToken}
                             shop={shop}
+                            predictedBalance={predictedBalance}
                         />
                     </Grid>
                 </Grid>
