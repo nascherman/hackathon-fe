@@ -10,6 +10,8 @@ import './App.css';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 
+const { CIBC_SERVICE_URL } = require('./config/config');
+
 class App extends Component {
     constructor(props) {
         super(props);
@@ -20,13 +22,27 @@ class App extends Component {
         this.state = {
             title: 'Team 13 App',
             connected: accessToken && shop ? true : false,
-            predictedBalance: -500,
+            predictedBalance: 0,
             accessToken: accessToken,
             shop: shop
         };
 
+        this.fetchShortFall();
+
         window.addEventListener('message', this.handleMessage.bind(this),
             false);
+    }
+
+    fetchShortFall() {
+        fetch(`${CIBC_SERVICE_URL}/shortfall/3`)
+            .then(res => res.json())
+            .then(res => {
+                if (res.shortFall) {
+                    this.setState({
+                        predictedBalance: res.shortFall
+                    });
+                }
+            })
     }
 
     handleMessage(event) {

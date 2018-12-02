@@ -9,6 +9,7 @@ export default class ShortFallWidget extends Component {
         super(props);
     }
 
+
     formatPredictedBalance() {
         const { predictedBalance } = this.props;
 
